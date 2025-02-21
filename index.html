@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Cumple peloncita!</title>
+    <style>
+        .tarjeta {
+    width: 350px;
+    height: 350px; /* Aumentamos la altura para que quepa el contenido */
+    perspective: 1000px;
+    display: none;
+}
+
+.tarjeta-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+
+.tarjeta:hover .tarjeta-inner {
+    transform: rotateY(180deg);
+}
+
+.tarjeta-front, .tarjeta-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 18px;
+    text-align: center;
+    padding: 15px;
+    overflow: hidden; 
+}
+
+.tarjeta-front {
+    background: white;
+    color: #ff4081;
+    border: 2px solid #ff4081;
+}
+
+.tarjeta-back {
+    background: #ff4081;
+    color: white;
+    transform: rotateY(180deg);
+    padding-bottom: 10px; 
+}
+
+.img-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    width: 100%;
+    max-height: 320px; 
+   
+}
+
+.img-tarjeta {
+    width: 100%;
+    height: auto;
+    max-height: 150px; 
+    object-fit: cover; 
+}
+
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffe6f0;
+            padding: 20px;
+            margin: 0;
+        }
+        h1 {
+            font-size: 28px;
+            color: #ff4081;
+        }
+        .contenedor {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .botones {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        .imagen {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+        }
+        .tarjeta {
+            width: 350px;
+            height: 250px;
+            perspective: 1000px;
+            display: none;
+        }
+        .tarjeta-inner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+        }
+        .tarjeta:hover .tarjeta-inner {
+            transform: rotateY(180deg);
+        }
+        .tarjeta-front, .tarjeta-back {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-size: 18px;
+            text-align: center;
+            padding: 15px;
+        }
+        .tarjeta-front {
+            background: white;
+            color: #ff4081;
+            border: 2px solid #ff4081;
+        }
+        .tarjeta-back {
+            background: #ff4081;
+            color: white;
+            transform: rotateY(180deg);
+        }
+        .tarjeta-back img {
+            width: 80%;
+            max-width: 200px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #ff4081;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease-in-out, transform 0.2s;
+        }
+        button:hover {
+            background-color: #ff79b0;
+            transform: scale(1.1);
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            button {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <audio autoplay loop>
+        <source src="cancion.mp3" type="audio/mpeg">
+    </audio>
+    
+    <h1>🎉 🌻¡Feliz Cumpleaños Fanyyyyyy! 🌻🎂</h1>
+    <h2>Cada botón tiene una sorpresa</h2>
+
+    <div class="contenedor">
+        <img src="imagen1.png" alt="Imagen sorpresa" class="imagen">
+        <div class="botones">
+            <button onclick="reproducirCancion()">Reproducir Canción</button>
+            <button onclick="mostrarTarjeta('tarjeta1')">Picale aqui </button>
+            <button onclick="mostrarTarjeta('tarjeta2')">Luego aqui</button>
+            <button onclick="mostrarTarjeta('tarjeta3')">tambien aqui</button>
+            <button onclick="mostrarTarjeta('tarjeta4')">Al final aqui</button>
+        </div>
+        <img src="imagen1.png" alt="Imagen sorpresa" class="imagen">
+    </div>
+
+    <div class="contenedor">
+        <div class="tarjeta" id="tarjeta1">
+            <div class="tarjeta-inner">
+                <div class="tarjeta-front">
+                    <p>Toca para ver el mensaje  </p>
+                </div>
+                <div class="tarjeta-back">
+                    <p>Holaa fanyyy , estas soooon las mañanitassss, muchas felicidades peloncita, ya 20 añotes por fin ya no te gano por tanto, espero que te la pases muy bien este día, te mereces lo mejor por ser simplemente tu, así de linda, que seas muy feliz en este día y obvio también mañana que nos veamos, eres muy especial para mí y espero en un futuro poder darte tu abrazo el mero día, sabes que te quiero y que eres súper especial, que recibas muchos regalos, disfruta tu día peloncita, te mando un abrazote y un beso🫶🏻</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="tarjeta" id="tarjeta2">
+            <div class="tarjeta-inner">
+                <div class="tarjeta-front">
+                    <p>Toca para ver el mensaje </p>
+                </div>
+                <div class="tarjeta-back">
+                    <p>No conseguí que feid viniera a cantarte, pero te conseguí una foto con el, lo bueno que no soy inseguro si no como me explicarías esto:)))</p>
+                    <div class="img-container">
+                        <img src="imagen2.jpg" alt="Imagen de Feid" class="img-tarjeta">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tarjeta" id="tarjeta3">
+            <div class="tarjeta-inner">
+                <div class="tarjeta-front">
+                    <p>Toca para ver el mensaje </p>
+                </div>
+                <div class="tarjeta-back">
+                    <p>Buenooo, espero que hoy de verdad disfrutes mucho tu día, mañana nos vemos, 5:30 paso por ti, tu solo ponte bonita , con muchas ganas de reír y pasarla bien, yo me encargo de lo demás 🫶🏻</p>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="tarjeta" id="tarjeta4">
+            <div class="tarjeta-inner">
+                <div class="tarjeta-front">
+                    <p>Toca para ver el mensaje </p>
+                </div>
+                <div class="tarjeta-back">
+                    <p>No soy feid pero yo también quiero tener una foto con la cumpleañera, te quiero fany, felicidades peloncitaaa.</p>
+                    <img src="imagen3.jpg" >
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function mostrarTarjeta(id) {
+            document.querySelectorAll('.tarjeta').forEach(tarjeta => tarjeta.style.display = 'none');
+            document.getElementById(id).style.display = 'block';
+        }
+    </script>
+    
+
+    <script>
+        function reproducirCancion() {
+            const audio = document.querySelector('audio');
+            audio.play();
+        }
+    </script>
+    
+
+</body>
+</html>
