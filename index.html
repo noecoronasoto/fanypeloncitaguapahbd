@@ -252,6 +252,10 @@
             document.querySelectorAll('.tarjeta').forEach(tarjeta => tarjeta.style.display = 'none');
             document.getElementById(id).style.display = 'block';
         }
+
+        function girarTarjeta(tarjeta) {
+            tarjeta.classList.toggle('girada');
+        }
     </script>
     
 
